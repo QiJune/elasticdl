@@ -1,7 +1,6 @@
 #ifndef ELASTICDL_CC_COMMON_EMBEDDING_TABLE_H_
 #define ELASTICDL_CC_COMMON_EMBEDDING_TABLE_H_
 
-#include <cassert>
 #include <unordered_map>
 
 #include "elasticdl/cc/common/type.h"
@@ -28,7 +27,7 @@ class EmbeddingTable {
 
   template <typename T>
   T* GetEmbeddingVector(int64_t index) {
-    assert(IsType<T>(element_type_));
+    CHECK(IsType<T>(element_type_));
 
     for (auto it = embedding_vectors_.begin(); it != embedding_vectors_.end();
          it++) {
