@@ -6,10 +6,17 @@ unittest_deps = [
 ]
 
 cc_library(
+    name = "type",
+    srcs = ["type.cc"],
+    hdrs = ["type.h"],
+    deps = ["@glog//:glog"],
+)
+
+cc_library(
     name = "tensor",
     srcs = ["tensor.cc"],
     hdrs = ["tensor.h"],
-    deps = ["@glog//:glog"],
+    deps = ["//elasticdl/cc/common:type"],
 )
 
 
@@ -20,4 +27,20 @@ cc_test (
     deps = unittest_deps + [
         "//elasticdl/cc/common:tensor",
     ],
+)
+
+cc_library(
+    name = "embedding_table",
+    srcs = ["embedding_table.cc"],
+    hdrs = ["embedding_table.h"],
+    deps = ["//elasticdl/cc/common:type"],
+)
+
+cc_test(
+    name = "embedding_table_test",
+    srcs = ["embedding_table_test.cc"],
+    copts = ["-Iexternal/gtest/include"],
+    deps = unittest_deps + [
+       "//elasticdl/cc/common:embedding_table",
+    ]
 )
