@@ -43,7 +43,9 @@ class EmbeddingTable {
     return new_vector;
   }
 
-  auto& embedding_vectors() { return embedding_vectors_; }
+  std::unordered_map<int64_t, char*>& embedding_vectors() {
+    return embedding_vectors_;
+  }
 
   int64_t GetSize();
 
