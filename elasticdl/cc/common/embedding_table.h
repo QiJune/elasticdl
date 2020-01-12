@@ -50,6 +50,8 @@ class EmbeddingTable {
 
   std::string& name() { return name_; }
 
+  int64_t embedding_dim() { return embedding_dim_; }
+
  private:
   std::string name_;
   ElemType element_type_;

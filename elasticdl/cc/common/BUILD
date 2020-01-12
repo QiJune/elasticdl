@@ -10,6 +10,7 @@ cc_library(
     srcs = ["type.cc"],
     hdrs = ["type.h"],
     deps = ["@glog//:glog"],
+    visibility = ["//visibility:public"],
 )
 
 cc_library(
@@ -17,6 +18,7 @@ cc_library(
     srcs = ["tensor.cc"],
     hdrs = ["tensor.h"],
     deps = ["//elasticdl/cc/common:type"],
+    visibility = ["//visibility:public"],
 )
 
 
@@ -34,6 +36,7 @@ cc_library(
     srcs = ["embedding_table.cc"],
     hdrs = ["embedding_table.h"],
     deps = ["//elasticdl/cc/common:type"],
+    visibility = ["//visibility:public"],
 )
 
 cc_test(
