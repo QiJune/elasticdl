@@ -25,3 +25,19 @@ cc_test(
        "//elasticdl/cc/ps:parameter",
     ]
 )
+
+cc_library(
+    name = "optimizer",
+    srcs = ["optimizer.cc"],
+    hdrs = ["optimizer.h"],
+    deps = common_deps + ["//elasticdl/cc/ps:parameter"],
+    visibility = ["//visibility:public"],
+)
+
+cc_test(
+    name = "optimizer_test",
+    srcs = ["optimizer_test.cc"],
+    deps = unittest_deps + [
+       "//elasticdl/cc/ps:optimizer",
+    ]
+)

@@ -61,6 +61,10 @@ class Tensor {
 
   const std::string& name() { return name_; }
 
+  bool IsSparse() { return !indices_.empty(); }
+
+  ElemType element_type() { return element_type_; }
+
   const int64_t GetHeight() const;
 
   const int64_t GetWidth() const;
