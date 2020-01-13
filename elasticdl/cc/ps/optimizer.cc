@@ -32,6 +32,7 @@ void SGDOptimizer::ApplyGradients(const std::vector<common::Tensor>& grads,
   for (auto& grad : grads) {
     auto& grad_name = grad.name();
     if (grad.IsSparse()) {
+      auto* test_data = grad.data<float>();
       CHECK(embedding_params.count(grad_name));
       auto* embedding_table = embedding_params[grad_name];
       DISPATCH(SparseSGD, type, grad, embedding_table, lr());

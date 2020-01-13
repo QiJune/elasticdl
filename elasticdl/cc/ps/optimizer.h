@@ -9,6 +9,8 @@ namespace ps {
 
 class Optimizer {
  public:
+  Optimizer(double lr) : lr_(lr) {}
+
   virtual void ApplyGradients(const std::vector<common::Tensor>& grads,
                               Parameter* p) = 0;
 
@@ -20,6 +22,8 @@ class Optimizer {
 
 class SGDOptimizer : public Optimizer {
  public:
+  SGDOptimizer(double lr) : Optimizer(lr) {}
+
   void ApplyGradients(const std::vector<common::Tensor>& grads, Parameter* p);
 };
 
