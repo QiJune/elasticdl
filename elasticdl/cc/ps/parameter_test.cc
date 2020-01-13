@@ -28,5 +28,5 @@ TEST(Parameter, CreateNonEmbeddingParam) {
 
   auto* data = p.non_embedding_params()["t1"]->data<float>();
   EXPECT_FLOAT_EQ(data[0], 0.1);
-  EXPECT_FLOAT_EQ(data[3], 0.3);
+  EXPECT_FLOAT_EQ(data[3], 0.4);
 }

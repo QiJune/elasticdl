@@ -53,6 +53,8 @@ class Tensor {
     return reinterpret_cast<T*>(data_);
   }
 
+  char* GetRawDataPointer() { return data_; }
+
   const std::vector<int64_t>& indices() const { return indices_; }
 
   const std::vector<int64_t>& dim() const { return dim_; }

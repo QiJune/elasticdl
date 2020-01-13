@@ -26,6 +26,6 @@ cc_test(
     srcs = ["sgd_test.cc"],
     copts = ["-Iexternal/gtest/include"],
     deps = unittest_deps + [
-       "//elasticdl/cc/optimizer:sgd",
+       "//elasticdl/cc/kernel:sgd",
     ]
 )

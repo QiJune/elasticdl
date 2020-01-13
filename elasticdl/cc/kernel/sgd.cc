@@ -1,6 +1,6 @@
-#include "elasticdl/cc/optimizer/sgd.h"
+#include "elasticdl/cc/kernel/sgd.h"
 namespace elasticdl {
-namespace optimizer {
+namespace kernel {
 
 template <>
 void SGD<float>(const common::Tensor& grad,
@@ -22,5 +22,5 @@ void SparseSGD<double>(const common::Tensor& grad,
                        common::EmbeddingTable* parameter,
                        double lr);
 
-}  // namespace optimizer
+}  // namespace kernel
 }  // namespace elasticdl

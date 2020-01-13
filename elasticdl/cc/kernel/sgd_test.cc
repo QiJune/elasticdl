@@ -1,9 +1,9 @@
-#include "elasticdl/cc/optimizer/sgd.h"
+#include "elasticdl/cc/kernel/sgd.h"
 
 #include "gtest/gtest.h"
 
 using namespace elasticdl::common;
-using namespace elasticdl::optimizer;
+using namespace elasticdl::kernel;
 
 TEST(SGD, Dense) {
   std::vector<float> param(24, 1.0);

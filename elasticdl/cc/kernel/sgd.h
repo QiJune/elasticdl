@@ -1,5 +1,5 @@
-#ifndef ELASTICDL_CC_OPTIMIZER_SGD_H_
-#define ELASTICDL_CC_OPTIMIZER_SGD_H_
+#ifndef ELASTICDL_CC_KERNEL_SGD_H_
+#define ELASTICDL_CC_KERNEL_SGD_H_
 
 #include <Eigen/Dense>
 
@@ -8,7 +8,7 @@
 #include "glog/logging.h"
 
 namespace elasticdl {
-namespace optimizer {
+namespace kernel {
 
 template <typename T>
 void SGD(const common::Tensor& grad, common::Tensor* parameter, double lr) {
@@ -44,6 +44,6 @@ void SparseSGD(const common::Tensor& grad,
     }
   }
 }
-}  // namespace optimizer
+}  // namespace kernel
 }  // namespace elasticdl
 #endif

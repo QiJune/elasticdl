@@ -19,8 +19,8 @@ void Parameter::CreateNonEmbeddingParam(const std::string& name,
   if (non_embedding_params_.count(name)) return;
   auto* p = new common::Tensor(name, type, dim);
   non_embedding_params_.emplace(name, p);
-  std::memcpy(data,
-              static_cast<void*>(p->mutable_data<char>()),
+  std::memcpy(static_cast<void*>(p->GetRawDataPointer()),
+              data,
               p->GetSize() * GetElementSize(type));
 }
 
