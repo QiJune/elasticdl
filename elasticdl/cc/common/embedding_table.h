@@ -51,9 +51,9 @@ class EmbeddingTable {
     T* b = buffer;
     for (auto i : indices) {
       T* v = GetEmbeddingVector<T>(i);
-      std::copy(static_cast<void*>(b),
-                static_cast<void*>(v),
-                embedding_dim_ * GetElementSize(element_type_));
+      std::memcpy(static_cast<void*>(b),
+                  static_cast<void*>(v),
+                  embedding_dim_ * GetElementSize(element_type_));
       b += embedding_dim_;
     }
   }

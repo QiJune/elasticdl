@@ -12,7 +12,7 @@ enum class ElemType {
   Int32,
 };
 
-static size_t GetElementSize(ElemType i) {
+static inline size_t GetElementSize(ElemType i) {
   switch (i) {
     case ElemType::Float32:
       return sizeof(float);
