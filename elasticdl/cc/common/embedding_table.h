@@ -42,6 +42,22 @@ class EmbeddingTable {
     return new_vector;
   }
 
+  template <typename T>
+  void GetEmbeddingVectors(const std::vector<int64_t>& indices,
+                           T* buffer,
+                           int64_t size) {
+    CHECK(IsType<T>(element_type_));
+    CHECK_EQ(size, indices.size() * embedding_dim_);
+    T* b = buffer;
+    for (auto i : indices) {
+      T* v = GetEmbeddingVector<T>(i);
+      std::copy(static_cast<void*>(b),
+                static_cast<void*>(v),
+                embedding_dim_ * GetElementSize(element_type_));
+      b += embedding_dim_;
+    }
+  }
+
   std::unordered_map<int64_t, char*>& embedding_vectors() {
     return embedding_vectors_;
   }
