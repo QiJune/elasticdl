@@ -10,6 +10,10 @@ common_deps = [
     "//elasticdl/cc/common:embedding_table",
 ]
 
+kernel_deps = [
+   "//elasticdl/cc/kernel:sgd",
+]
+
 cc_library(
     name = "parameter",
     srcs = ["parameter.cc"],
@@ -30,7 +34,7 @@ cc_library(
     name = "optimizer",
     srcs = ["optimizer.cc"],
     hdrs = ["optimizer.h"],
-    deps = common_deps + ["//elasticdl/cc/ps:parameter"],
+    deps = common_deps + kernel_deps + ["//elasticdl/cc/ps:parameter"],
     visibility = ["//visibility:public"],
 )
 

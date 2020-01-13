@@ -59,11 +59,11 @@ class Tensor {
 
   const std::vector<int64_t>& dim() const { return dim_; }
 
-  const std::string& name() { return name_; }
+  const std::string& name() const { return name_; }
 
-  bool IsSparse() { return !indices_.empty(); }
+  bool IsSparse() const { return !indices_.empty(); }
 
-  ElemType element_type() { return element_type_; }
+  ElemType element_type() const { return element_type_; }
 
   const int64_t GetHeight() const;
 
