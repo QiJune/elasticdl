@@ -17,3 +17,11 @@ cc_library(
     deps = common_deps,
     visibility = ["//visibility:public"],
 )
+
+cc_test(
+    name = "parameter_test",
+    srcs = ["parameter_test.cc"],
+    deps = unittest_deps + [
+       "//elasticdl/cc/ps:parameter",
+    ]
+)
