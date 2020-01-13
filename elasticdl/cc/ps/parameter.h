@@ -42,9 +42,15 @@ class Parameter {
                                const std::vector<int64_t>& dim,
                                void* data);
 
+  bool is_initalized() { return is_initalized_; }
+
+  bool version() { return version_; }
+
  private:
   std::unordered_map<std::string, common::Tensor*> non_embedding_params_;
   std::unordered_map<std::string, common::EmbeddingTable*> embedding_params_;
+  int64_t version_;
+  bool is_initalized_{false};
 };
 
 }  // namespace ps
