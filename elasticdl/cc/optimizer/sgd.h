@@ -7,14 +7,11 @@
 #include "elasticdl/cc/common/tensor.h"
 #include "glog/logging.h"
 
-using elasticdl::common::EmbeddingTable;
-using elasticdl::common::Tensor;
-
 namespace elasticdl {
 namespace optimizer {
 
 template <typename T>
-void SGD(const Tensor& grad, Tensor* parameter, double lr) {
+void SGD(const common::Tensor& grad, common::Tensor* parameter, double lr) {
   auto g_size = grad.GetSize();
   auto p_size = parameter->GetSize();
   CHECK_EQ(g_size, p_size);
@@ -30,7 +27,9 @@ void SGD(const Tensor& grad, Tensor* parameter, double lr) {
 }
 
 template <typename T>
-void SparseSGD(const Tensor& grad, EmbeddingTable* parameter, double lr) {
+void SparseSGD(const common::Tensor& grad,
+               common::EmbeddingTable* parameter,
+               double lr) {
   int64_t w = grad.GetWidth();
   int64_t embedding_dim = parameter->embedding_dim();
   CHECK_EQ(w, embedding_dim);
