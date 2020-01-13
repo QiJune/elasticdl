@@ -29,4 +29,5 @@ TEST(EmbeddingTable, GetEmbeddingVectors) {
   EXPECT_FLOAT_EQ(v[0], 1.0);
   EXPECT_FLOAT_EQ(v[1], 2.0);
   EXPECT_FLOAT_EQ(v[3], 0.0);
+  delete[] v;
 }
