@@ -1,19 +1,24 @@
 PYTHON = python
 
-TF_TENSOR_SHAPE_FILE = elasticdl/proto/tensor_shape.proto
+TF_TENSOR_SHAPE_PROTO_FILE = elasticdl/proto/tensor_shape.proto
 EDL_PROTO_FILE = elasticdl/proto/elasticdl.proto
 
 GO_FILE_DIR = elasticdl/pkg/proto
 GO_PB_FILE = $(GO_FILE_DIR)/elasticdl.pb.go
+TF_TENSOR_SHAPE_GO_FILE  = $(GO_FILE_DIR)/tensor_shape.pb.go
 
 CXX = g++
 CAPI_DIR = elasticdl/pkg/kernel/capi
 
-all: python_pb $(GO_PB_FILE) kernel
+all: python_pb $(GO_PB_FILE) $(TF_TENSOR_SHAPE_GO_FILE) kernel
 
 python_pb:
-	$(PYTHON) -m grpc_tools.protoc -I . $(TF_TENSOR_SHAPE_FILE) --python_out=.
+	$(PYTHON) -m grpc_tools.protoc -I . $(TF_TENSOR_SHAPE_PROTO_FILE) --python_out=.
 	$(PYTHON) -m grpc_tools.protoc -I . $(EDL_PROTO_FILE) --python_out=. --grpc_python_out=.
+
+$(TF_TENSOR_SHAPE_GO_FILE): $(TF_TENSOR_SHAPE_PROTO_FILE)
+	mkdir -p $(GO_FILE_DIR)
+	protoc -I . $< --go_out=.
 
 $(GO_PB_FILE): $(EDL_PROTO_FILE)
 	mkdir -p $(GO_FILE_DIR)

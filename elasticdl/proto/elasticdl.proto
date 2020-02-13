@@ -83,7 +83,7 @@ message Tensor {
   // Dtype of the tensor, e.g. "int64", "float32".
   TensorDtype dtype = 5;
 
-  tensorflow.TensorShapeProto shape = 6;
+  TensorShapeProto shape = 6;
 }
 
 message EmbeddingTableInfo {
